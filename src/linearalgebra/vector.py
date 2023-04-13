@@ -4,8 +4,6 @@ class Vector:
     def __init__(self, vectorComponents):
         if (not vectorComponents):
             raise ValueError("The list of vector components cannot be empty")
-        if (not all(item.isdigit() for item in vectorComponents)):
-            raise ValueError("The list of vector components can only contain numbers")
         self._vectorComponents = vectorComponents
         self._vectorSpace = len(vectorComponents)
     
@@ -17,7 +15,7 @@ class Vector:
     
     def __str__(self) -> str:
         vector = "<"
-        for i in range(0, self._vectorSpace - 1):
+        for i in range(0, self._vectorSpace):
             if (i == len(self._vectorComponents) - 1):
                 vector += str(self._vectorComponents[i])
             else:
@@ -40,7 +38,7 @@ class Vector:
             raise ValueError("Cannot compute dot product because the vectors have different vector space")
         dot_product = 0
         for i in range(0, self.getVectorSpace()):
-            dot_product += (self.getVectorComponents[i] * otherVector.getVectorComponents()[i])
+            dot_product += (self.getVectorComponents()[i] * otherVector.getVectorComponents()[i])
         return dot_product
     
     def euclidean_norm(self) -> float:
@@ -51,4 +49,3 @@ class Vector:
             sum_of_squares += pow(self._vectorComponents[i], 2)
         
         return sqrt(sum_of_squares)
-    
