@@ -1,5 +1,2 @@
 #Ignore venv folder
 \venv
-
-#Ignore tests folder
-\tests
